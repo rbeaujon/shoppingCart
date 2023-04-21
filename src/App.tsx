@@ -1,5 +1,5 @@
 import React from 'react';
-import { Cart} from './components/cart/cart';
+import {Cart} from './components/cart/cart';
 import './App.css';
 
 function App() {
