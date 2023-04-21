@@ -1,4 +1,8 @@
 import { useEffect, useState } from 'react';
+import { shopSelected } from '../../store/onoff/cart.actions';
+import store from '../../store/index';
+
+import './shopList.scss';
 
 interface Shop {
   id: string;
@@ -26,21 +30,26 @@ export const ShopList = () => {
 
   const handleShopSelect = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedShopId = event.target.value;
-    const selectedShop = shops.find((shop) => shop.id === selectedShopId);
-    setSelectedShop(selectedShop);
+    const shop = shops.find((shop) => shop.id === selectedShopId);
+    setSelectedShop(shop);
+    store.dispatch(shopSelected({ id: selectedShopId }));
+
   };
 
   return (
-    <div>
-      <select onChange={handleShopSelect}>
-        <option value="">Select a shop</option>
-        {shops.map((shop) => (
-          <option key={shop.id} value={shop.id}>
-            {shop.name}
-          </option>
-        ))}
-      </select>
+  <div className='shopList'>
+    <select 
+      className='shopList__select'
+      onChange={handleShopSelect}>
+        
+      <option value="">Select a shop</option>
+      {shops.map((shop) => (
+        <option key={shop.id} value={shop.id}>
+          {shop.name}
+        </option>
+      ))}
+    </select>
+  </div>
 
-    </div>
   );
 };
