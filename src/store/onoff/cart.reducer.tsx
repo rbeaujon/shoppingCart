@@ -4,7 +4,7 @@ import {
   CART_NAME_SELECTED, 
   ADD_TO_CART,
   DELETE_FROM_CART
-} from './cart.actions';
+} from './cart.constants';
 
 interface State {
   isShopSelected: boolean;
@@ -73,14 +73,12 @@ const CartReducer = (
       }
     return state;
     case DELETE_FROM_CART: 
-      if (index !== undefined) {
-        const newProducts = [...state.products];
-        newProducts.splice(index, 1);
+   
         return {
           ...state,
-          products: newProducts,
+          products: payload,
         };
-      }
+    
       return state;
     default:
       return state;
