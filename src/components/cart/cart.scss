@@ -110,4 +110,12 @@
       color: #273348;
     }
   }
+  &__error {
+    color: red;
+    position: absolute;
+    left:580px;
+    top: 60px;
+    font-size: 8px;
+    text-transform: uppercase;
+  }
 }
