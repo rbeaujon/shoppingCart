@@ -10,9 +10,10 @@ interface Shop {
   sortOrder: number;
 }
 
-export const ShopList = () => {
+export const ShopList = (props: { error: boolean }) => {
   const [shops, setShops] = useState<Shop[]>([]);
   const [selectedShop, setSelectedShop] = useState<Shop | undefined>(undefined);
+  const { error, ...restProps } = props;
   
   const getShops = async () => {
     try {
@@ -39,7 +40,8 @@ export const ShopList = () => {
   return (
   <div className='shopList'>
     <select 
-      className='shopList__select'
+      className={`shopList__select ${error ? '--error' : ''}`}
+      
       onChange={handleShopSelect}>
         
       <option value="">Select a shop</option>

@@ -14,5 +14,8 @@
     line-height: 19px;
     letter-spacing: -0.01em;
     color: #273348;
+    &.--error {
+      border-color: red;
+    }
   }
 }

@@ -10,6 +10,11 @@ export interface Product {
   id: string;
   name: string;
 }
+export interface Error {
+  message?: string;
+  shopError?: boolean;
+  nameError?: boolean;
+}
 
 export interface RootState {
   cart: CartState;
