@@ -28,7 +28,6 @@ test('select is render?', async () => {
   render(<ShopList error={false} />);
   
   const selectElement = screen.getByRole('combobox');
-  const options = screen.getAllByRole('option');
   
   expect(selectElement).toBeInTheDocument();
   await waitFor(() => {
