@@ -3,9 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.5.2",
     "@types/node": "^16.18.24",
     "@types/react": "^18.0.37",
@@ -23,7 +20,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --coverage --watchAll",
     "eject": "react-scripts eject",
     "server": "json-server --port 3200 --watch ./src/components/services/api/data.json"
   },
@@ -46,6 +43,12 @@
     ]
   },
   "devDependencies": {
-    "sass": "^1.62.0"
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/user-event": "^14.4.3",
+    "@types/redux-mock-store": "^1.0.3",
+    "redux-mock-store": "^1.5.4",
+    "sass": "^1.62.0",
+    "ts-jest": "^29.1.0"
   }
 }
