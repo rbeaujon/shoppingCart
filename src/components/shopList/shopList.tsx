@@ -41,7 +41,7 @@ export const ShopList = (props: { error: boolean }) => {
   <div className='shopList'>
     <select 
       className={`shopList__select ${error ? '--error' : ''}`}
-      
+      data-testid="combobox"
       onChange={handleShopSelect}>
         
       <option value="">Select a shop</option>
