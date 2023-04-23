@@ -22,9 +22,39 @@
     line-height: 28px;
     color: #273348;
   }
+  &__inputName {
+    box-sizing: border-box;
+    padding: 0px;
+    position: absolute;
+    width: 260px;
+    height: 48px;
+    left: 40px;
+    top: 88px;
+    background: #FFFFFF;
+    border: 2px solid #ECEDEE;
+    border-radius: 10px;
+    padding-left: 10px;
+    font-size: 16px;
+    &.--error {
+      border-color: red;
+    }
+  
+    &::placeholder {
+      position: absolute;
+      width: 46px;
+      height: 19px;
+      left: 20px;
+      top: calc(50% - 19px/2 - 0.5px);
+      font-family: 'Work Sans';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 19px;
+      color: #9298A2;
+    }
+  }
   &__addButton {
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
     padding: 0px 22px;
@@ -42,7 +72,6 @@
     font-weight: 500;
     font-size: 16px;
     line-height: 19px;
-    display: flex;
     &:hover{
       background: #29ba7d;
     }
@@ -118,4 +147,182 @@
     font-size: 8px;
     text-transform: uppercase;
   }
+}
+
+
+/*** RESPONSIVE DESIGN ***/
+
+/* Mobiles */
+@media only screen and (max-width: 320px) {
+   .cart {
+    width: 100vw;
+    height: 100vw;
+    left: 0px;
+    top: 0px;
+    border: 0;
+    box-shadow: none;
+  
+    &__inputName {
+    position: absolute;
+    width: 90vw;
+    left: 50%;
+    display: flex;
+    transform: translateX(-50%);
+    text-align: center;
+     &::placeholder {
+      left: 50%;
+      transform: translateX(-50%);
+     }
+    }
+    &__addButton {
+      top: 210px;
+      left: 50%;
+      width: 90vw;
+      transform: translateX(-50%);
+      border-radius: 10px;
+    }  
+    &__products {
+      width: 100vw;
+      max-height: 70vh;
+      top: 280px;
+
+      div {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+      }
+      &--id {
+        left: 10%;
+        max-width: 100px;
+      }
+      &--name {
+        left: 50%;
+      }
+    }
+    &__deleteButton {
+      left: 75%;
+    }
+    &__error {
+      left: 70%;
+      top: 50px;
+    }
+  }
+}
+
+@media only screen and (min-width: 321px) and (max-width: 767px) {
+  .cart {
+    width: 100vw;
+    height: 100vw;
+    left: 0px;
+    top: 0px;
+    border: 0;
+    box-shadow: none;
+  
+  
+    &__inputName {
+    position: absolute;
+    width: 90vw;
+    left: 50%;
+    display: flex;
+    transform: translateX(-50%);
+    text-align: center;
+     &::placeholder {
+      left: 50%;
+      transform: translateX(-50%);
+     }
+    }
+    &__addButton {
+      top: 210px;
+      left: 50%;
+      width: 90vw;
+      transform: translateX(-50%);
+      border-radius: 10px;
+    }  
+    &__products {
+      width: 100vw;
+      max-height: 70vh;
+      top: 280px;
+
+      div {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+      }
+      &--id {
+        left: 10%;
+        max-width: 100px;
+      }
+      &--name {
+        left: 50%;
+      }
+    }
+    &__deleteButton {
+      left: 75%;
+    }
+    &__error {
+      left: 70%;
+      top: 50px;
+    }
+  }
+}
+
+/* Tablet */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+   .cart {
+    width: 100vw;
+    height: 100vw;
+    left: 0px;
+    top: 0px;
+    border: 0;
+    box-shadow: none;
+  
+    &__inputName {
+    position: absolute;
+    width: 90vw;
+    left: 50%;
+    display: flex;
+    transform: translateX(-50%);
+    text-align: center;
+     &::placeholder {
+      left: 50%;
+      transform: translateX(-50%);
+     }
+    }
+    &__addButton {
+      top: 210px;
+      left: 50%;
+      width: 90vw;
+      transform: translateX(-50%);
+      border-radius: 10px;
+    }  
+    &__products {
+      width: 100vw;
+      max-height: 70vh;
+      top: 280px;
+
+      div {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+      }
+      &--id {
+        left: 10%;
+        max-width: 100px;
+      }
+      &--name {
+        left: 50%;
+      }
+    }
+    &__deleteButton {
+      left: 75%;
+    }
+    &__error {
+      left: 70%;
+      top: 50px;
+    }
+  }
+}
+
+/* Laptop */
+@media only screen and (min-width: 992px) {
 }

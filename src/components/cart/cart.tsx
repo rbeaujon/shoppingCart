@@ -19,7 +19,6 @@ export const Cart = () => {
     if (cart.isShopSelected && cart.isProductSelected) {
       setError({})
       dispatch<any>(addToCart());
-      dispatch(cartNameSelected({ name: ''}))
     } else if(!cart.isShopSelected && !cart.isProductSelected) {
       setError({message: 'Shop and name are required', shopError: true, nameError: true})
     } else if(!cart.isProductSelected){
@@ -49,34 +48,38 @@ export const Cart = () => {
       <TextInput
         type="text"
         id="name"
+        data-testid="cart_input_name"
         name="name"
         placeholder="Name"
         value={cart.productName}
         onChange={(e)=> dispatch(cartNameSelected({ name: e.target.value }))}
         required
-        error={error.nameError ? true : false}
+        className={`cart__inputName ${error.nameError ? '--error' : ''}`}
       />
 
       <ShopList error={error.shopError ? true : false}/>
 
       <Button 
         id="add" 
+        data-testid="cart__addButton"
         className="cart__addButton" 
         onClick={() => handleAddClick()}
       >Add</Button>
 
-      <div className="cart__products">
+      <div className="cart__products" data-testid="cart__products">
         {products.map((product: Product, index: number) => (
           <div key={index}>
             <span className="cart__products--id">{product.id}</span>
             <span className="cart__products--name">{product.name}</span>
+            
             <input type="button"
               id="delete" 
-              className="cart__deleteButton " 
+              data-testid="cart__deleteButton"
+              className="cart__deleteButton" 
               value="Delete"
-              onClick={() => handleDeleteClick(index)}
-              
+              onClick={() => handleDeleteClick(index)}  
             />
+            
           </div>
         ))}
       </div>
