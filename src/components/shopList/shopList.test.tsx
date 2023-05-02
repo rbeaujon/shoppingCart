@@ -1,3 +1,4 @@
+import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import { ShopList } from './shopList';
 import data from '../services/api/data.json'

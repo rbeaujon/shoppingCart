@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store/index';
 import { cartNameSelected, addToCart, deleteFromCart } from '../../store/onoff/cart.actions';
@@ -9,7 +9,7 @@ import TextInput from '../utils/textInput/textInput';
 
 import './cart.scss';
 
-export const Cart = () => {
+export const Cart: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const dispatch = useDispatch();
   const cart = useSelector((state: RootState) => state.cart);

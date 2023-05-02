@@ -1,45 +1,63 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-  context: path.resolve(__dirname, 'src'),
-  entry: './index.tsx',
+  mode: 'production',
+  entry: './src/index.tsx',
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js',
+  },
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js'],
+  },
   module: {
     rules: [
       {
         test: /\.tsx?$/,
-        use: {
-          loader: 'ts-loader',
-          options: {
-            transpileOnly: true
-          }
-        },
+        use: 'ts-loader',
         exclude: /node_modules/,
       },
-      
       {
-        test: /\.s[ac]ss$/i,
+        test: /\.scss$/,
         use: [
-          "style-loader",
-          "css-loader",
-          "sass-loader",
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'sass-loader',
         ],
       },
-      
       {
         test: /\.css$/i,
         use: ["style-loader", "css-loader"],
       },
     ],
   },
-  resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './src/index.html',
+    }),
+    new MiniCssExtractPlugin(),
+  ],
+  optimization: {
+    minimize: true, 
+    chunkIds: 'named',
+    splitChunks: {
+    minSize: 2000,
+    chunks: 'async',
+    }
   },
-  output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist'),
-  },
+  performance: {
+    hints: process.env.NODE_ENV === 'production' ? 'warning' : false,
+    maxAssetSize: 244000,
+    maxEntrypointSize: 244000,
+  },    
   devServer: {
-    static: path.join(__dirname, "dist"),
+    static: {
+      directory: path.resolve(__dirname, "public"),
+      watch: true,
+      publicPath: '/'
+    },
     compress: true,
     port: 4000,
   },
