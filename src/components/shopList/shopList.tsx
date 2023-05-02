@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { shopSelected } from '../../store/onoff/cart.actions';
 import store from '../../store/index';
 
@@ -9,8 +9,11 @@ interface Shop {
   name: string;
   sortOrder: number;
 }
+interface ShopListProps {
+  error: boolean;
+}
 
-export const ShopList = (props: { error: boolean }) => {
+export const ShopList: React.FC<ShopListProps> = ( props ) => {
   const [shops, setShops] = useState<Shop[]>([]);
   const [selectedShop, setSelectedShop] = useState<Shop | undefined>(undefined);
   const { error, ...restProps } = props;
